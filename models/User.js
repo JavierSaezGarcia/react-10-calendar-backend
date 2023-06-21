@@ -13,15 +13,7 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
-    },
-//     date: {
-//         type: Date,
-//         default: Date.now
-//     },
-//     isAdmin: {
-//         type: Boolean,
-//         default: false
-//    }
+    }
 });
 
 module.exports = model('User', UserSchema);

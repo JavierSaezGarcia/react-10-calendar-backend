@@ -1,6 +1,6 @@
 # React Calendar Backend 
 
-# INSTALL:
+## INSTALL:
 
 ## Initial config:
 ```
@@ -39,3 +39,4 @@ necesariamente deberían logearse de nuevo y generar un nuevo token.
 ```
 
 
+### NOTA: recuerda que para revalidar un token caducado solo hay que ingresar con el login y reemplazar x-token resultante en postman
