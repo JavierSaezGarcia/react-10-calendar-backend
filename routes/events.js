@@ -29,15 +29,20 @@ router.post(
         // middlewares
         check('title', 'El titulo es obligatorio').not().isEmpty(),
         check('start', 'Fecha de inicio es obligatoria').custom( isDate ),
-        check('end', 'Fecha de finalización es obligatoria').custom( isDate ),
-        check('user', 'El id del usuario es obligatorio').not().isEmpty(),
+        check('end', 'Fecha de finalización es obligatoria').custom( isDate ),       
         validarCampos
 
     ],
     createEvent);
 
 // Actualizar un evento
-router.put('/:id', updateEvent);
+router.put('/:id', 
+[
+    check('title','El titulo es obligatorio').not().isEmpty(),
+    check('start','Fecha de inicio es obligatoria').custom( isDate ),
+    check('end','Fecha de finalización es obligatoria').custom( isDate ),
+    validarCampos
+], updateEvent);
 
 // Eliminar un evento
 router.delete('/:id', deleteEvent);

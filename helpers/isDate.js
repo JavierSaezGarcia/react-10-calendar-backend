@@ -1,12 +1,20 @@
 
-const isDate = (value) => {
-    if (!value || isNaN(new Date(value))) {
+const moment = require('moment');
+
+const isDate = ( value ) => {
+    if ( !value ) {
         return false;
-    } else {
-        return true;
     }
+
+    const fecha = moment( value );
+    if ( fecha.isValid() ) {
+        return true;
+    } else {
+        return false;
+    }
+    
 }
 
-module.exports = {
-    isDate
-}
+
+
+module.exports = { isDate };
