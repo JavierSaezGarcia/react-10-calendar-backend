@@ -6,9 +6,11 @@ const createEvent = async (req, res = response) => {
     // verificar el evento
     const event = new Event(req.body);
     try {
+        
         event.user = req.uid;
+        
         const eventoGuardado = await event.save();
-        res.status(201).json({
+        res.json({
             ok: true,
             event: eventoGuardado
         })
