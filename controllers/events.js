@@ -1,6 +1,25 @@
 const { response } = require('express');
 const Event = require('../models/Event');
 
+const getEvents = async (req, res = response) => {
+    try {
+        const events = await Event.find().populate('user', 'name');
+        res.json({
+            ok: true,
+            events
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+        })
+    }
+    // Con find() tendriamos todos los eventos
+    // con populate('user', 'name') traemos el nombre e id del usuario
+
+}
 
 const createEvent = async (req, res = response) => {
     // verificar el evento
@@ -25,29 +44,6 @@ const createEvent = async (req, res = response) => {
 
 
 }
-
-const getEvents = async (req, res = response) => {
-    try {
-        const events = await Event.find().populate('user', 'name');
-        res.json({
-            ok: true,
-            events
-        })
-
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            ok: false,
-            msg: 'Por favor hable con el administrador'
-        })
-    }
-    // Con find() tendriamos todos los eventos
-    // con populate('user', 'name') traemos el nombre e id del usuario
-
-}
-
-
-
 
 
 const updateEvent = async (req, res = response) => {
@@ -91,7 +87,6 @@ const updateEvent = async (req, res = response) => {
 
     }
 }
-
 const deleteEvent = async(req, res = response) => {
 
     const eventoId = req.params.id; // ide del evento por parametros de la url

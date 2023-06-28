@@ -23,8 +23,6 @@ router.post(
     '/new', 
     [   
         // Validaciones middlewares
-        check('name', 'El nombre es obligatorio').not().isEmpty(),
-        check('name', 'El nombre debe ser de más de 3 caracteres y menos de 20').isLength({ min: 3, max: 20 }),
         check('email', 'El email es obligatorio').isEmail(),
         check('password', 'El password debe ser de 6 caracteres').isLength({ min: 6 }),
         validarCampos
