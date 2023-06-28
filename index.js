@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const { dbConnection } = require('./database/config');
-const PORT = process.env.PORT || 8062;
+const PORT = process.env.PORT || 3000;
 
 // console.log( process.env.PORT );
 
@@ -41,7 +41,7 @@ app.get('*', (req, res) => {
 // });
 
 // escuchar peticiones
-app.listen(PORT,  () => {
+app.listen(PORT, "0.0.0.0",  () => {
     console.log(`Servidor corriendo en puerto ${ PORT }`);
 });
 
